@@ -20,6 +20,25 @@ include_once "../view/HeadPage.php";
 
 <section id="SectionPage">
 
+    <?php
+    
+    $db = getConnection();
+    $request = $db->prepare('SELECT img_Jeux FROM `t_jeux` WHERE id_Jeux = "1"');
+    $request->execute();
+    $tabUser = $request->fetchAll(PDO::FETCH_ASSOC);
+    if ($tabUser != null) {
+        echo $tabUser[0]["img_Jeux"];
+        echo "<img src=" . $tabUser[0]["img_Jeux"] . " height=\"200\" width=\"200\"/>";
+    }
+    else {
+        return false;
+    }
+    
+    
+    
+    ?>
+    
+    
 </section>
 <aside id="AsidePage">
     <?php

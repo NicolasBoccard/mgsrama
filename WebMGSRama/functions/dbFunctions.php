@@ -75,6 +75,20 @@ function getUsersInfosById($id)
     return $infos;
 }
 
+//Fonction permettant de récuperer l'emplacement 
+function getImgLocationById($id) {
+    $db = getConnection();
+    $request = $db->prepare("SELECT img_Jeux FROM `t_jeux` WHERE `id_Jeux` = ".$id);
+    $request->execute();
+    $tabUser = $request->fetchAll(PDO::FETCH_ASSOC);
+    if ($tabUser != null) {
+        echo $tabUser[0]["img_Jeux"];
+        echo "<img src=" . $tabUser[0]["img_Jeux"] . " height=\"200\" width=\"200\"/>";
+    }
+    else {
+        return false;
+    }
+}
 //Fonction d'insersion des utilisateurs
 function insertUser($nom, $prenom, $pseudo, $email, $password)
 {
