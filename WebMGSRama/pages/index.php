@@ -2,7 +2,7 @@
 
 /*
  * Page        : index.php
- * Description : This page is the index's page of the website.
+ * Description : This page is the home page of the website.
  * Authors     : Chauche Benoit & Boccard Nicolas
  * Date        : 01.12.2015
  * Version     : 0.2
