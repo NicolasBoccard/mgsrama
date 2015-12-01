@@ -1,0 +1,105 @@
+/*
+* Auteurs : Boccard Nicolas, Chauche Benoit
+* Entreprise : CFPT Informatique
+* Date : Novembre 2015
+* Version : 1.0
+*/
+
+/**************************MISE EN FORME GENERALE [DEBUT]**********************/
+
+body{
+    padding: 0;
+    margin: 0;
+    font-family: 'Droid Sans', sans-serif;
+    color: #4F4F4F;
+}
+
+.wrapper{
+    width: 1000px;
+    margin: auto;
+}
+
+/**************************MISE EN FORME GENERALE [FIN]************************/
+
+/********************************HAUT DE PAGE [DEBUT]**************************/
+
+#HeaderPage{
+    height: 65px;
+    width: 100%;
+    border: 1px solid #969696;
+    background-color: #969696;
+}
+
+#HeaderPage h1{
+    margin-left: 290px;
+    margin-top: 16px;
+}
+
+/********************************HAUT DE PAGE [FIN]****************************/
+
+/**************************CORPS DE LA PAGE - ASIDE [DEBUT]********************/
+
+#AsidePage{
+    
+    width: 250px;
+    border: 1px solid #A6A6A6;
+    border-radius: 2px;
+    margin-top: 20px;
+    padding-left: 10px; 
+    padding-bottom: 10px;
+}
+
+#AsidePage header{
+    margin-top: 10px;
+    font-size: 24px;
+}
+
+#AsidePage input{
+    margin-top: 5px;
+    width: 232px;
+    padding-left: 5px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+
+#AsidePage #submit{
+    width: 241px;
+    font-size: 15px;
+}
+
+/**************************CORPS DE LA PAGE - ASIDE [FIN]**********************/
+
+/**************************CORPS DE LA PAGE - SECTION [DEBUT]******************/
+
+#SectionPage{
+    height: 730px;
+    width: 730px;
+    border: 1px solid #A6A6A6;
+    border-radius: 2px;
+    float: right;
+}
+
+/**************************CORPS DE LA PAGE - SECTION [FIN]********************/
+
+/*******************************BAS DE LA PAGE [DEBUT]*************************/
+
+#FooterPage{
+    height: 85px;
+    width: 99.5%;
+    border: 1px solid #969696;
+    bottom: 0;
+    position: fixed;
+    background-color: #969696;
+}
+
+#FooterPage p{
+    font-size: 16px;
+    margin-left: 20px;
+}
+
+#FooterPage h3{
+    font-size: 16px;
+    margin-left: 190px;
+}
+
+/********************************BAS DE LA PAGE [FIN]**************************/
