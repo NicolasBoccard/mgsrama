@@ -7,7 +7,6 @@ $titlePage = "Accueil";
 
 //Insersion du header HTML
 include_once "../view/HeadPage.php";
-
 ?>
 
 <section id="SectionPage">
@@ -15,12 +14,7 @@ include_once "../view/HeadPage.php";
 </section>
 <aside id="AsidePage">
     <?php
-    if($_SESSION["idLogged"] == "") {
-        include_once "../view/AsidePageLogin.php";
-    }
- else {
-        include_once "../view/AsidePageLogged.php";
-    }
+    include_once "../view/AsidePage.php";
     ?>
 </aside>
 
