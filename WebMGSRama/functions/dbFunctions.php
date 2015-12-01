@@ -1,4 +1,14 @@
 <?php
+
+/*
+ * Page        : dbFunctions.php
+ * Description : This page is included to the project pages 
+ *               to use the functions of the database.
+ * Authors     : Chauche Benoit & Boccard Nicolas
+ * Date        : 01.12.2015
+ * Version     : 1.0
+ */
+
 //Fichier de fonctions relatives à la base de donnée
 
 include_once "mysql.inc.php";
