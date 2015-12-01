@@ -1,4 +1,13 @@
 <?php
+
+/*
+ * Page        : index.php
+ * Description : This page is the home page of the website.
+ * Authors     : Chauche Benoit & Boccard Nicolas
+ * Date        : 01.12.2015
+ * Version     : 0.2
+ */
+
 //Insersion du fichier de fonction
 include_once "../functions/dbFunctions.php";
 
