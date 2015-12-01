@@ -8,4 +8,5 @@ $message = isset($_GET["message"]) ? $_GET["message"] : ""
         <input type="password" name="password" placeholder="Mot de passe...">
         <input type="submit" name="submit" value="Se connecter" id="submit">
         <div id="AsideMessage"><?php echo $message?></div>
+        <div id="LienInscription"><a href="inscription.php">Créer un compte...</a></div>
     </form>

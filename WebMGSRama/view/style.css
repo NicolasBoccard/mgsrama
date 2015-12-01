@@ -19,6 +19,18 @@ body{
     margin: auto;
 }
 
+a {
+    color: #4F4F4F;
+    text-decoration: none;
+}
+
+a:hover 
+{
+     color:#4F4F4F; 
+     text-decoration:none; 
+     cursor:pointer;  
+}
+
 /**************************MISE EN FORME GENERALE [FIN]************************/
 
 /********************************HAUT DE PAGE [DEBUT]**************************/
@@ -67,14 +79,35 @@ body{
     font-size: 15px;
 }
 
+#LienInscription{
+    margin-top: 9px;
+    font-size: 13px;
+    margin-left: 130px;
+}
+
+#LienInscription a:hover{
+    text-decoration: underline;
+}
+
 .ProfilAside{
     margin-bottom: 2.5px;
     margin-top: 2.5px;
 }
 
+.GestionAside{
+    margin-top: -10px;
+    margin-bottom: -10px;
+}
+
+.GestionAside a:hover{
+    color: #00C210;
+}
+
 #AsideMessage{
     margin-top: 5px;
 }
+
+
 
 /**************************CORPS DE LA PAGE - ASIDE [FIN]**********************/
 
