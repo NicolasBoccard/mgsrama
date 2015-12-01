@@ -125,9 +125,43 @@ a:hover
 
 #SectionPage header{
     background-color: #969696;
-    height: 20px;
+    height: 25px;
     padding: 20px;
     font-size: 24px;
+}
+
+#SectionPage form{
+    margin-left : 120px;
+    margin-top: 10px;
+}
+
+#SectionPage form td{
+    text-align: right;
+    margin-top: 5px;
+    padding-left: 5px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    width: 200px;
+}
+
+#SectionPage form td input{
+    padding-left: 5px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+
+#SectionPage .submit{
+    width: 150px;
+    font-size: 15px;
+    padding-left: 5px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    margin-left: 10px;
+}
+
+#SectionPage #ButtonForm{
+    margin-left: 65px;
+    margin-top: 10px;
 }
 
 /**************************CORPS DE LA PAGE - SECTION [FIN]********************/
