@@ -34,6 +34,21 @@ function getConnection() {
     return $db;
 }
 
+//Fonction vérifiant que le bon nombre de paramètre a été entré par l'utilisateur
+function checkParams($array, $keys)
+{
+    $l = count($keys);
+    
+    for($i = 0; $i < $l; $i++)
+    {
+        if(empty($array[$keys[$i]]))
+        {
+            return false;
+        }
+    }
+    return true;
+}
+
 //Fonction retournant l'id de l'utilisateur si les identifiants sont bons, ou false s'ils sont erronés
 function testLogin($pseudo, $password)
 {
@@ -58,4 +73,20 @@ function getUsersInfosById($id)
     $out = $request->fetchAll(PDO::FETCH_ASSOC);
     $infos = array("pseudo" => $out[0]["pseudo_Utilisateur"], "email" => $out[0]["email_Utilisateur"]);
     return $infos;
+}
+
+//Fonction d'insersion des utilisateurs
+function insertUser($nom, $prenom, $pseudo, $email, $password)
+{
+    $db = getConnection();
+    $sql = "INSERT INTO `webmgsrama`.`t_utilisateurs` (`id_Utilisateur`, `nom_Utilisateur`, `prenom_Utilisateur`, `pseudo_Utilisateur`, `email_Utilisateur`, `sha1mdp_Utilisateur`, `privilege_Utilisateur`) VALUES (NULL, :nom, :prenom, :pseudo, :email, :password, '0');";
+    $request = $db->prepare($sql);
+    
+    $request->bindParam(':nom', $nom, PDO::PARAM_STR);
+    $request->bindParam(':prenom', $prenom, PDO::PARAM_STR);
+    $request->bindParam(':pseudo', $pseudo, PDO::PARAM_STR);
+    $request->bindParam(':email', $email, PDO::PARAM_STR);
+    $request->bindParam(':password', $password, PDO::PARAM_STR);
+    
+    $request->execute();
 }

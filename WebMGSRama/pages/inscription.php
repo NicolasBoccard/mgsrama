@@ -10,7 +10,33 @@
 //Insersion du fichier de fonction
 include_once "../functions/dbFunctions.php";
 
-//Définition du nom de la page
+$message = "";
+$nom = isset($_POST["nom"]) ? $_POST["nom"] : "";
+$prenom = isset($_POST["prenom"]) ? $_POST["prenom"] : "";
+$pseudo = isset($_POST["pseudo"]) ? $_POST["pseudo"] : "";
+$email = isset($_POST["email"]) ? $_POST["email"] : "";
+$password = isset($_POST["password"]) ? $_POST["password"] : "";
+$confirmPassword = isset($_POST["confirmPassword"]) ? $_POST["confirmPassword"] : "";
+
+if (isset($_POST["submit"])) {
+    if (checkParams($_POST, ["nom", "prenom", "pseudo", "email", "password", "confirmPassword"])) {
+        insertUser($nom, $prenom, $pseudo, $email, $password);
+        $nom = "";
+        $prenom = "";
+        $pseudo = "";
+        $email = "";
+        $message = "Inscription réussie. Vous pouvez maintenant vous connecter.";
+    } else {
+        $message = "Veuillez remplir tous les champs.";
+    }
+} else if (isset($_POST["discard"])) {
+    $nom = "";
+    $prenom = "";
+    $pseudo = "";
+    $email = "";
+}
+
+//DÃ©finition du nom de la page
 $titlePage = "Inscription";
 
 //Insersion du header HTML
@@ -28,7 +54,7 @@ include_once "../view/HeadPage.php";
                     <label for="nom">Nom :</label>
                 </td>
                 <td>
-                    <input type="text" name="nom">
+                    <input type="text" name="nom" value="<?php echo $nom ?>">
                 </td>
             </tr>
             <tr>
@@ -36,7 +62,7 @@ include_once "../view/HeadPage.php";
                     <label for="prenom">Prénom :</label>
                 </td>
                 <td>
-                    <input type="text" name="prenom">
+                    <input type="text" name="prenom" value="<?php echo $prenom ?>">
                 </td>
             </tr>
             <tr>
@@ -44,7 +70,7 @@ include_once "../view/HeadPage.php";
                     <label for="pseudo">Pseudo :</label>
                 </td>
                 <td>
-                    <input type="text" name="pseudo">
+                    <input type="text" name="pseudo" value="<?php echo $pseudo ?>">
                 </td>
             </tr>
             <tr>
@@ -52,7 +78,7 @@ include_once "../view/HeadPage.php";
                     <label for="email">Email :</label>
                 </td>
                 <td>
-                    <input type="email" name="email">
+                    <input type="email" name="email" value="<?php echo $email ?>">
                 </td>
             </tr>
             <tr>
@@ -76,12 +102,13 @@ include_once "../view/HeadPage.php";
             <input type="submit" name="discard" value="Annuler" class="submit"> 
             <input type="submit" name="submit" value="Confirmer" class="submit">
         </div>
+        <div id="MessageErreur"><?php echo $message ?></div>
     </form>
 </section>
 <aside id="AsidePage">
-    <?php
-    include_once "../view/AsidePage.php";
-    ?>
+<?php
+include_once "../view/AsidePage.php";
+?>
 </aside>
 
 <?php
