@@ -1,6 +1,6 @@
 <!--
 Pages       : HeadPage.php
-Description : This page is included to the project pages to show the tag <head> & <header> 
+Description : This page is included to the project pages to show the tags <head> & <header> 
 Authors     : Chauche Benoit & Boccard Nicolas
 Dates       : 01.12.2015
 Versions    : 1.0

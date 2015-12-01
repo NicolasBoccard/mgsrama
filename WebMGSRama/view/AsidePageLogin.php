@@ -1,4 +1,14 @@
 <?php
+
+/*
+ * Page        : AsidePageLogin.php
+ * Description : This page is included to the project pages to display 
+ *               the aside of a offline user.
+ * Authors     : Chauche Benoit & Boccard Nicolas
+ * Date        : 01.12.2015
+ * Version     : 1.0
+ */
+
 $pseudo = isset($_GET["pseudo"]) ? $_GET["pseudo"] : "";
 $message = isset($_GET["message"]) ? $_GET["message"] : ""
 ?>
