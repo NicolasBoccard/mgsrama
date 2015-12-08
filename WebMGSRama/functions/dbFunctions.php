@@ -53,7 +53,7 @@ function checkParams($array, $keys)
 function testLogin($pseudo, $password)
 {
     $db = getConnection();
-    $request = $db->prepare('SELECT id_Utilisateur, pseudo_Utilisateur, sha1mdp_Utilisateur FROM `t_Utilisateurs` WHERE pseudo_Utilisateur = "'.$pseudo.'" AND sha1mdp_Utilisateur = "'.$password.'"');
+    $request = $db->prepare('SELECT id_Utilisateur, pseudo_Utilisateur, sha1mdp_Utilisateur FROM `t_Utilisateurs` WHERE pseudo_Utilisateur = "'.$pseudo.'" AND sha1mdp_Utilisateur = "'.sha1($password).'"');
     $request->execute();
     $tabUser = $request->fetchAll(PDO::FETCH_ASSOC);
     if ($tabUser != null) {

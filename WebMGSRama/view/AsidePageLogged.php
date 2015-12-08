@@ -19,8 +19,8 @@ $email = $infos["email"];
 <header>Gestion</header>
 <ul>
     <div class="GestionAside">
-        <a href="GestionMesJeux.php"><li>Mes jeux</li></a>
-        <a href="GestionMonProfil.php"><li>Mon profil</li></a>
+        <a href="gestionmesjeux.php"><li>Mes jeux</li></a>
+        <a href="gestionmonprofil.php"><li>Mon profil</li></a>
     </div>
 </ul>
 <a href="logout.php"><input type="submit" value="Se déconnecter"></a>

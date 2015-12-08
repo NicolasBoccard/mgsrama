@@ -10,6 +10,10 @@
 //Insersion du fichier de fonction
 include_once "../functions/dbFunctions.php";
 
+if ($_SESSION["idLogged"] != null) {
+    header('Location: index.php');
+}
+
 $message = "";
 $nom = isset($_POST["nom"]) ? $_POST["nom"] : "";
 $prenom = isset($_POST["prenom"]) ? $_POST["prenom"] : "";
@@ -20,12 +24,16 @@ $confirmPassword = isset($_POST["confirmPassword"]) ? $_POST["confirmPassword"] 
 
 if (isset($_POST["submit"])) {
     if (checkParams($_POST, ["nom", "prenom", "pseudo", "email", "password", "confirmPassword"])) {
-        insertUser($nom, $prenom, $pseudo, $email, $password);
-        $nom = "";
-        $prenom = "";
-        $pseudo = "";
-        $email = "";
-        $message = "Inscription réussie. Vous pouvez maintenant vous connecter.";
+        if ($password != $confirmPassword) {
+            $message = "Les deux mots de passe sont différents.";
+        } else {
+            insertUser($nom, $prenom, $pseudo, $email, sha1($password));
+            $nom = "";
+            $prenom = "";
+            $pseudo = "";
+            $email = "";
+            $message = "Inscription réussie. Vous pouvez maintenant vous connecter.";
+        }
     } else {
         $message = "Veuillez remplir tous les champs.";
     }
