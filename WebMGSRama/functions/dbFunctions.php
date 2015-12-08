@@ -69,10 +69,10 @@ function testLogin($pseudo, $password)
 function getUsersInfosById($id)
 {
     $db = getConnection();
-    $request = $db->prepare("SELECT pseudo_Utilisateur, email_Utilisateur FROM `t_Utilisateurs` WHERE `id_Utilisateur` = ".$id);
+    $request = $db->prepare("SELECT nom_Utilisateur, prenom_Utilisateur, pseudo_Utilisateur, email_Utilisateur FROM `t_Utilisateurs` WHERE `id_Utilisateur` = ".$id);
     $request->execute();
     $out = $request->fetchAll(PDO::FETCH_ASSOC);
-    $infos = array("pseudo" => $out[0]["pseudo_Utilisateur"], "email" => $out[0]["email_Utilisateur"]);
+    $infos = array("nom" => $out[0]["nom_Utilisateur"], "prenom" => $out[0]["prenom_Utilisateur"], "pseudo" => $out[0]["pseudo_Utilisateur"], "email" => $out[0]["email_Utilisateur"]);
     return $infos;
 }
 
@@ -101,6 +101,39 @@ function insertUser($nom, $prenom, $pseudo, $email, $password)
     $request->bindParam(':pseudo', $pseudo, PDO::PARAM_STR);
     $request->bindParam(':email', $email, PDO::PARAM_STR);
     $request->bindParam(':password', $password, PDO::PARAM_STR);
+    
+    $request->execute();
+}
+
+//Fonction permettant de modifier les infos d'un utilisateur
+function updateUser($idUser, $nom, $prenom, $pseudo, $email, $password)
+{
+    $db = getConnection();
+    $sql = "UPDATE `webmgsrama`.`t_utilisateurs` SET `nom_Utilisateur` = :nom, `prenom_Utilisateur` = :prenom, `pseudo_Utilisateur` = :pseudo, `email_Utilisateur` = :email, `sha1mdp_Utilisateur` = :password WHERE `t_utilisateurs`.`id_Utilisateur` = :idUser;";
+    $request = $db->prepare($sql);
+    
+    $request->bindParam(':nom', $nom, PDO::PARAM_STR);
+    $request->bindParam(':prenom', $prenom, PDO::PARAM_STR);
+    $request->bindParam(':pseudo', $pseudo, PDO::PARAM_STR);
+    $request->bindParam(':email', $email, PDO::PARAM_STR);
+    $request->bindParam(':password', $password, PDO::PARAM_STR);
+    $request->bindParam(':idUser', $idUser, PDO::PARAM_INT);
+    
+    $request->execute();
+}
+
+//Fonction permettant de modifier les infos d'un utilisateur
+function updateUserSansPassword($idUser, $nom, $prenom, $pseudo, $email)
+{
+    $db = getConnection();
+    $sql = "UPDATE `webmgsrama`.`t_utilisateurs` SET `nom_Utilisateur` = :nom, `prenom_Utilisateur` = :prenom, `pseudo_Utilisateur` = :pseudo, `email_Utilisateur` = :email WHERE `t_utilisateurs`.`id_Utilisateur` = :idUser;";
+    $request = $db->prepare($sql);
+    
+    $request->bindParam(':nom', $nom, PDO::PARAM_STR);
+    $request->bindParam(':prenom', $prenom, PDO::PARAM_STR);
+    $request->bindParam(':pseudo', $pseudo, PDO::PARAM_STR);
+    $request->bindParam(':email', $email, PDO::PARAM_STR);
+    $request->bindParam(':idUser', $idUser, PDO::PARAM_INT);
     
     $request->execute();
 }
