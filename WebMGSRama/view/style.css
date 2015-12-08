@@ -135,6 +135,25 @@ a:hover
     margin-top: 10px;
 }
 
+#tdTableGameLeft{
+    border-left: 1px solid #969696;
+}
+
+#tdTableGameRight{
+    border-right: 1px solid #969696;
+}
+
+
+#SectionPage table td{
+    border-top: 1px solid #969696;
+    border-bottom: 1px solid #969696;
+    padding: 15px;
+    //padding-top: 5px;
+    //padding-left: 5px;
+    //padding-right: 5px;
+    //padding-bottom: 5px;
+}
+
 #SectionPage form td{
     text-align: right;
     margin-top: 5px;

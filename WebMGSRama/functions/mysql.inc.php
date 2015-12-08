@@ -10,7 +10,7 @@
  */
 
 //Fichier de constantes
-//Constantes de connexion à la base de donnée
+//Constantes de connexion Ã  la base de donnÃ©e
 
 DEFINE("HOST", "127.0.0.1");
 DEFINE("DBNAME", "webmgsrama");

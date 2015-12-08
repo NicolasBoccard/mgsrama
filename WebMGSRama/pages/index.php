@@ -11,22 +11,16 @@
 //Insersion du fichier de fonction
 include_once "../functions/dbFunctions.php";
 
-//Définition du nom de la page
+//DÃ©finition du nom de la page
 $titlePage = "Accueil";
 
 //Insersion du header HTML
 include_once "../view/HeadPage.php";
 ?>
-
 <section id="SectionPage">
-
-    <?php
-    
-    getImgGame();
-    
-    ?>
-    
-    
+    <table cellspacing = "0">
+        <?php getImgGame(); ?>
+    </table>
 </section>
 <aside id="AsidePage">
     <?php

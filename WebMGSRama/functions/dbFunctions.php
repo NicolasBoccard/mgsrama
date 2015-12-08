@@ -9,17 +9,18 @@
  * Version     : 1.0
  */
 
-//Fichier de fonctions relatives à la base de donnée
-
-include_once "mysql.inc.php";
-
+//Fichier de fonctions relatives Ã  la base de donnÃ©e
 session_start();
+include_once "mysql.inc.php";
+include_once "displayFunctions.php";
+
+
 
 if (!isset($_SESSION["idLogged"])) {
     $_SESSION["idLogged"] = "";
 }
 
-//Fonction de connexion à la base
+//Fonction de connexion Ã  la base
 function getConnection() {
     static $db = null;
     if ($db == null) {
@@ -34,7 +35,7 @@ function getConnection() {
     return $db;
 }
 
-//Fonction vérifiant que le bon nombre de paramètre a été entré par l'utilisateur
+//Fonction vÃ©rifiant que le bon nombre de paramÃ¨tre a Ã©tÃ© entrÃ© par l'utilisateur
 function checkParams($array, $keys)
 {
     $l = count($keys);
@@ -49,7 +50,7 @@ function checkParams($array, $keys)
     return true;
 }
 
-//Fonction retournant l'id de l'utilisateur si les identifiants sont bons, ou false s'ils sont erronés
+//Fonction retournant l'id de l'utilisateur si les identifiants sont bons, ou false s'ils sont erronÃ©s
 function testLogin($pseudo, $password)
 {
     $db = getConnection();
@@ -64,7 +65,7 @@ function testLogin($pseudo, $password)
     }
 }
 
-//Fonction permettant de récuperer la liste des détails d'un utilisateur par rapport à son id
+//Fonction permettant de rÃ©cuperer la liste des dÃ©tails d'un utilisateur par rapport Ã  son id
 function getUsersInfosById($id)
 {
     $db = getConnection();
@@ -75,15 +76,14 @@ function getUsersInfosById($id)
     return $infos;
 }
 
-//Fonction permettant de récuperer l'emplacement 
+//Fonction permettant de rÃ©cuperer l'emplacement 
 function getImgGame() {
     $db = getConnection();
-    $request = $db->prepare("SELECT img_Jeux FROM `t_jeux`");
+    $request = $db->prepare("SELECT * FROM `t_jeux`");
     $request->execute();
     $tabUser = $request->fetchAll(PDO::FETCH_ASSOC);
     if ($tabUser != null) {
-        echo $tabUser[0]["img_Jeux"];
-        echo "<img src=" . $tabUser[0]["img_Jeux"] . " height=\"200\" width=\"200\"/>";
+        displayImg($tabUser);
     }
     else {
         return false;
