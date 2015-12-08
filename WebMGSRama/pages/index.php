@@ -30,11 +30,6 @@ include_once "../view/HeadPage.php";
         echo $tabUser[0]["img_Jeux"];
         echo "<img src=" . $tabUser[0]["img_Jeux"] . " height=\"200\" width=\"200\"/>";
     }
-    else {
-        return false;
-    }
-    
-    
     
     ?>
     
