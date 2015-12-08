@@ -76,9 +76,9 @@ function getUsersInfosById($id)
 }
 
 //Fonction permettant de récuperer l'emplacement 
-function getImgLocationById($id) {
+function getImgGame() {
     $db = getConnection();
-    $request = $db->prepare("SELECT img_Jeux FROM `t_jeux` WHERE `id_Jeux` = ".$id);
+    $request = $db->prepare("SELECT img_Jeux FROM `t_jeux`");
     $request->execute();
     $tabUser = $request->fetchAll(PDO::FETCH_ASSOC);
     if ($tabUser != null) {
