@@ -49,7 +49,7 @@ function displayDetailGame($tab, $console) {
         </tr>
         <tr>
             <td>
-                Date de sortie :
+                Date de sortie(aaaa:mm:jj) :
                 <?= $tab[0]["dateSortie_Jeux"]?>
             </td>
         </tr>
