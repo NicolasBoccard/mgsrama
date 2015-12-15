@@ -137,3 +137,46 @@ function updateUserSansPassword($idUser, $nom, $prenom, $pseudo, $email)
     
     $request->execute();
 }
+
+//Fonction permettant d'inserer un jeu
+function insertJeu($idUser, $titre, $date, $studio, $description, $bandeOriginale, $image)
+{
+    $db = getConnection();
+    $sql = "INSERT INTO `webmgsrama`.`t_jeux` (`id_Jeux`, `titre_Jeux`, `dateSortie_Jeux`, `studio_Jeux`, `description_Jeux`, `bo_Jeux`, `img_Jeux`, `id_Utilisateur`) VALUES (NULL, :titre, :date, :studio, :description, :bandeOriginale, :image, :idUser);";
+    $request = $db->prepare($sql);
+    
+    $request->bindParam(':titre', $titre, PDO::PARAM_STR);
+    $request->bindParam(':date', $date, PDO::PARAM_STR);
+    $request->bindParam(':studio', $studio, PDO::PARAM_STR);
+    $request->bindParam(':description', $description, PDO::PARAM_STR);
+    $request->bindParam(':bandeOriginale', $bandeOriginale, PDO::PARAM_STR);
+    $request->bindParam(':image', $image, PDO::PARAM_STR);
+    $request->bindParam(':idUser', $idUser, PDO::PARAM_INT);
+    
+    $request->execute();
+    return $db->lastInsertId();
+}
+
+//Fonction permettant de d'ajouter des consoles à un jeu
+function insertConsole($idJeu, $idConsole)
+{
+    $db = getConnection();
+    $sql = "INSERT INTO `webmgsrama`.`t_disponible` (`id_Jeux`, `id_Console`) VALUES (:idJeu, :idConsole);";
+    $request = $db->prepare($sql);
+    
+    $request->bindParam(':idJeu', $idJeu, PDO::PARAM_INT);
+    $request->bindParam(':idConsole', $idConsole, PDO::PARAM_INT);
+    
+    $request->execute();
+}
+
+//Fonction permettant de récuperer la liste des consoles
+function getConsoles()
+{
+    $db = getConnection();
+    $sql = "SELECT * FROM `t_consoles`;";
+    $request = $db->prepare($sql);
+    $request->execute();
+    $out = $request->fetchAll(PDO::FETCH_ASSOC);
+    return $out;
+}

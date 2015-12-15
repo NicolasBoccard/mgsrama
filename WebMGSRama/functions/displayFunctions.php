@@ -27,3 +27,15 @@ function displayImg($tabUser) {
     //echo $tabUser[1]["img_Jeux"];
     //echo "<img src=" . $tabUser[1]["img_Jeux"] . " height=\"200\" width=\"200\"/>";
 }
+
+//Fonction permettant de créer un "select" avec les différentes consoles
+function displayConsoles($tabConsoles)
+{
+    $out = "<select>";
+    for ($i = 0; $i < count($tabConsoles); $i++)
+    {
+        $out .= '<option value="'. $tabConsoles[$i]["id_Console"] .'">' . $tabConsoles[$i]["nom_Console"] . '</option>';
+    }
+    $out .= "</select>";
+    return $out;
+}
