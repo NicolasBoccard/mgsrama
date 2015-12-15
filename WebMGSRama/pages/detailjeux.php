@@ -1,31 +1,23 @@
 <?php
+
 /*
- * Page        : index.php
- * Description : This page is the home page of the website.
+ * Page        : detailjeux.php
+ * Description : This page is the page that displays the details of the games.
  * Authors     : Chauche Benoit & Boccard Nicolas
- * Date        : 01.12.2015
- * Version     : 0.2
+ * Date        : 15.12.2015
+ * Version     : 0.1
  */
 
 //Insersion du fichier de fonction
 include_once "../functions/dbFunctions.php";
 
 //DÃ©finition du nom de la page
-$titlePage = "Accueil";
+$titlePage = "Détails";
 
 //Insersion du header HTML
 include_once "../view/HeadPage.php";
 ?>
 <section id="SectionPage">
-    <?php
-    if (isset($_REQUEST['id'])) {
-        getGameById($_REQUEST['id']);
-    } else {
-        ?>
-        <table cellspacing = "0">
-            <?php getImgGame(); ?>
-        </table>
-    <?php } ?>
 </section>
 <aside id="AsidePage">
     <?php
