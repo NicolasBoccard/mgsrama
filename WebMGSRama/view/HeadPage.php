@@ -16,7 +16,7 @@ Versions    : 1.0
     <body>
         <header id="HeaderPage">
             <div class="wrapper">
-                <h1>Web Metal Gear Solid Rama</h1>
+                <h1><a href="../pages/index.php">Web Metal Gear Solid Rama</a></h1>
             </div>
         </header>
         <div class="wrapper">
