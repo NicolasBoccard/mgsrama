@@ -17,15 +17,61 @@ function displayImg($tabUser) {
             <td id="tdTableGameRight">
                 <?= $tabUser[$i]["titre_Jeux"]; ?><br/>
                 <?= $tabUser[$i]["description_Jeux"]; ?>
-                <input type="submit" value="Infos..."/>
+                <a href="index.php?id=<?= $tabUser[$i]["id_Jeux"] ?>"><input type="submit" value="Infos..." name="id"/></a>
             </td>
         </tr><?php
-        //echo $tabUser[$i]["img_Jeux"];
-        //echo $tabUser[$i]["titre_Jeux"];
-        //echo "<img src=" . $tabUser[$i]["img_Jeux"] . " height=\"200\" width=\"200\"/><br/>";
     }
-    //echo $tabUser[1]["img_Jeux"];
-    //echo "<img src=" . $tabUser[1]["img_Jeux"] . " height=\"200\" width=\"200\"/>";
+}
+
+//Fonction pour afficher les jeux en détails
+function displayDetailGame($tab, $console) {
+    ?>
+    <table>
+        <tr>
+            <td>
+                <?= $tab[0]["titre_Jeux"]; ?>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <?php echo "<img src=" . $tab[0]["img_Jeux"] . " height=\"200\" width=\"200\"/><br/>"; ?>
+            </td>
+            <td>
+                Description :<br/>
+                <?= $tab[0]["description_Jeux"]; ?>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Console : 
+                <?= $console; ?>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Date de sortie(aaaa:mm:jj) :
+                <?= $tab[0]["dateSortie_Jeux"]?>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Editeur :
+                <?= $tab[0]["studio_Jeux"]?>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Bande originale :
+                <?= $tab[0]["bo_Jeux"]?>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a href="index.php"><input type="submit" value="Retour"></a>
+            </td>
+        </tr>
+    </table>
+    <?php
 }
 
 //Fonction permettant de créer un "select" avec les différentes consoles

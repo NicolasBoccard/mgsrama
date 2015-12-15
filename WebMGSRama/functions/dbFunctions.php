@@ -180,3 +180,27 @@ function getConsoles()
     $out = $request->fetchAll(PDO::FETCH_ASSOC);
     return $out;
 }
+
+//Fonction pour récupérer les données des jeux
+function getGameById($id) {
+    $db = getConnection();
+    $request = $db->prepare("SELECT * FROM `t_jeux` WHERE id_Jeux = " . $id);
+    $request->execute();
+    $tab = $request->fetchAll(PDO::FETCH_ASSOC);
+    if ($tab != null) {
+        $consoles = getConsoleByGame($tab[0]['id_Jeux']);
+        displayDetailGame($tab, $consoles[0]['nom_Console']);
+    }
+    else {
+        return false;
+    }
+}
+
+//Fonction pour récupérer les consoles sur lesquels les jeux sont sortis
+function getConsoleByGame($id) {
+    $db = getConnection();
+    $request = $db->prepare("SELECT nom_Console FROM `t_disponible`, t_consoles WHERE id_Jeux = " . $id);
+    $request->execute();
+    $tab = $request->fetchAll(PDO::FETCH_ASSOC);
+    return $tab;
+}
