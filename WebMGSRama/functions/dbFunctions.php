@@ -214,6 +214,7 @@ function getGameByUser($id_user) {
     return $tab;
 }
 
+
 //Fonction permettant de supprimer un jeu
 function supprimerJeu($idJeu)
 {
@@ -223,4 +224,21 @@ function supprimerJeu($idJeu)
     
     $request = $db->prepare('DELETE FROM `webmgsrama`.`t_jeux` WHERE `t_jeux`.`id_Jeux` = '. $idJeu);
     $request->execute();
+}
+    
+function modifyGame($id) {
+    $db = getConnection();
+    $request = $db->prepare("SELECT * FROM `t_jeux` WHERE id_Jeux = " . $id);
+    $request->execute();
+    $tab = $request->fetchAll(PDO::FETCH_ASSOC);
+    if ($tab != null) {
+        return $tab;
+    }
+    else {
+        return false;
+    }
+}
+
+function getNameConsoleGame($id) {
+    
 }

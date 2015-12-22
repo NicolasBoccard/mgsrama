@@ -26,19 +26,26 @@ include_once "../view/HeadPage.php";
         Gestion de mes jeux
     </header>
     <?php
-    $test = getGameByUser($_SESSION["idLogged"]);
+    $tab = getGameByUser($_SESSION["idLogged"]);
     echo "<table>";
-    for ($i=0;$i<count($test);$i++)
+    for ($i=0;$i<count($tab);$i++)
     {
         echo "<tr><td>";
+
         echo "<img src=" . $test[$i]["img_Jeux"] . " height=\"200\" width=\"200\"/></td><td>";
         echo $test[$i]["titre_Jeux"] . "</td><td>";
         echo "<a href=\"modifierjeu.php?id=" . $test[$i]["id_Jeux"] . "\"><input type=\"submit\" value=\"modifier\"/></a></td><td>";
         echo "<a href=\"supprimerjeu.php?id=" . $test[$i]["id_Jeux"] . "\"><input type=\"submit\" value=\"supprimer\"/></a></td></tr>";
+
+        echo "<img src=" . $tab[$i]["img_Jeux"] . " height=\"200\" width=\"200\"/></td><td>";
+        echo $tab[$i]["titre_Jeux"] . "</td><td>";
+        echo "<a href=\"modifierjeux.php?id=" . $tab[$i]["id_Jeux"] . "\"><input type=\"submit\" value=\"modifier\"/></a></td><td>";
+        echo "<form action=\"gestionmesjeux.php\" action=\"post\"><input type=\"submit\" value=\"supprimer\"/></form></td></tr>";
+
     }
     echo "</table>";
 ?>
-    <a href="ajouterjeux.php"><input type="submit" value="Ajouter un jeu"/></a>
+    <a href="ajouterjeu.php"><input type="submit" value="Ajouter un jeu"/></a>
 </section>
 <aside id="AsidePage">
     <?php
