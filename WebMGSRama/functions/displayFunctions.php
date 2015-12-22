@@ -77,7 +77,7 @@ function displayDetailGame($tab, $console) {
 //Fonction permettant de créer un "select" avec les différentes consoles
 function displayConsoles($tabConsoles)
 {
-    $out = "<select>";
+    $out = "<select name=\"console1\">";
     for ($i = 0; $i < count($tabConsoles); $i++)
     {
         $out .= '<option value="'. $tabConsoles[$i]["id_Console"] .'">' . $tabConsoles[$i]["nom_Console"] . '</option>';

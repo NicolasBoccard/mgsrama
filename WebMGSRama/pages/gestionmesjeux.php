@@ -21,7 +21,7 @@ $titre = isset($_POST["titre"]) ? $_POST["titre"] : "";
 $date = isset($_POST["date"]) ? $_POST["date"] : "";
 $studio = isset($_POST["studio"]) ? $_POST["studio"] : "";
 $description = isset($_POST["description"]) ? $_POST["description"] : "";
-$tabConsoles = $_POST["console1"];
+$tabConsoles = isset($_POST["console1"]) ? $_POST["console1"] : "";
 $bandeOriginale = "";
 $image = "";
 
