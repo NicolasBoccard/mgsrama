@@ -204,3 +204,12 @@ function getConsoleByGame($id) {
     $tab = $request->fetchAll(PDO::FETCH_ASSOC);
     return $tab;
 }
+
+
+function getGameByUser($id_user) {
+    $db = getConnection();
+    $request = $db->prepare("SELECT * FROM t_jeux WHERE id_Utilisateur = " . $id_user);
+    $request->execute();
+    $tab = $request->fetchAll(PDO::FETCH_ASSOC);
+    return $tab;
+}
