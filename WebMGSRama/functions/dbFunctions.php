@@ -213,3 +213,20 @@ function getGameByUser($id_user) {
     $tab = $request->fetchAll(PDO::FETCH_ASSOC);
     return $tab;
 }
+
+function modifyGame($id) {
+    $db = getConnection();
+    $request = $db->prepare("SELECT * FROM `t_jeux` WHERE id_Jeux = " . $id);
+    $request->execute();
+    $tab = $request->fetchAll(PDO::FETCH_ASSOC);
+    if ($tab != null) {
+        return $tab;
+    }
+    else {
+        return false;
+    }
+}
+
+function getNameConsoleGame($id) {
+    
+}

@@ -13,51 +13,13 @@ include_once "../functions/dbFunctions.php";
 if ($_SESSION["idLogged"] == "") {
     header('Location: index.php');
 }
+$id = $_REQUEST['id'];
+$tab = modifyGame($id);
+$console = getConsoleByGame($tab[0]['id_Jeux']);
 
-$ConsolesHTML = displayConsoles(getConsoles());
-
-$message = "";
-$titre = isset($_POST["titre"]) ? $_POST["titre"] : "";
-$date = isset($_POST["date"]) ? $_POST["date"] : "";
-$studio = isset($_POST["studio"]) ? $_POST["studio"] : "";
-$description = isset($_POST["description"]) ? $_POST["description"] : "";
-$tabConsoles = isset($_POST["console1"]) ? $_POST["console1"] : "";
-$bandeOriginale = "";
-$image = "";
-
-if (isset($_POST["submit"])) {
-    if (checkParams($_POST, ["titre", "date", "studio", "description"])) {
-        if (basename($_FILES['bandeOriginale']['name']) != "") {
-            $uploaddir = '../media/bo/';
-            $bandeOriginale = $uploaddir . basename($_FILES['bandeOriginale']['name']);
-            move_uploaded_file($_FILES['bandeOriginale']['tmp_name'], $bandeOriginale);
-        } else {
-            $bandeOriginale = "";
-        }
-        if (basename($_FILES['image']['name']) != "") {
-            $uploaddir = '../media/pictures/';
-            $image = $uploaddir . basename($_FILES['image']['name']);
-            move_uploaded_file($_FILES['image']['tmp_name'], $image);
-        } else {
-            $image = "";
-        }
-        $idJeu = insertJeu($_SESSION["idLogged"], $titre, $date, $studio, $description, $bandeOriginale, $image);
-        insertConsole($idJeu, $tabConsoles);
-        $titre = "";
-        $date = "";
-        $studio = "";
-        $description = "";
-        $bandeOriginale = "";
-        $image = "";
-        $message = "Le jeu a bien été ajouté.";
-    } else {
-        $message = 'Veuillez remplir tous les champs suivis d\'un "*".';
-    }
-} else if (isset($_POST["discard"])) {
-    $titre = "";
-    $date = "";
-    $studio = "";
-    $description = "";
+if(isset($_REQUEST["discard"]))
+{
+    header('Location: gestionmesjeux.php');
 }
 
 //DÃƒÂ©finition du nom de la page
@@ -68,7 +30,7 @@ include_once "../view/HeadPage.php";
 ?>
 <section id="SectionPage">
     <header>
-        Ajouter un jeu
+        Modifier un jeu
     </header>
     <form enctype="multipart/form-data" method="POST" action="#">
         <table>
@@ -77,7 +39,7 @@ include_once "../view/HeadPage.php";
                     <label for="titre">Titre* :</label>
                 </td>
                 <td>
-                    <input type="text" name="titre" value="<?php echo $titre ?>">
+                    <input type="text" name="titre" value="<?=$tab[0]["titre_Jeux"] ?>">
                 </td>
             </tr>
             <tr>
@@ -85,7 +47,7 @@ include_once "../view/HeadPage.php";
                     <label for="date">Date* :</label>
                 </td>
                 <td>
-                    <input type="date" name="date">
+                    <input type="date" name="date" value="<?=$tab[0]["dateSortie_Jeux"]?>">
                 </td>
             </tr>
             <tr>
@@ -93,7 +55,7 @@ include_once "../view/HeadPage.php";
                     <label for="studio">Studio* :</label>
                 </td>
                 <td>
-                    <input type="text" name="studio" value="<?php echo $studio ?>">
+                    <input type="text" name="studio" value="<?= $tab[0]["studio_Jeux"] ?>">
                 </td>
             </tr>
             <tr>
@@ -101,7 +63,7 @@ include_once "../view/HeadPage.php";
                     <label for="description">Description* :</label>
                 </td>
                 <td>
-                    <input type="text" name="description" value="<?php echo $description ?>">
+                    <textarea><?= $tab[0]["description_Jeux"] ?></textarea>
                 </td>
             </tr>
             <tr>
@@ -109,7 +71,17 @@ include_once "../view/HeadPage.php";
                     <label for="console1">Console :</label>
                 </td>
                 <td>
-                    <?php echo $ConsolesHTML ?>
+                    <select>
+                        <?php 
+                        for($i=0;$i<count($console);$i++)
+                        {
+                            if($console[$i]["nom_Console"] == $tab[0][""])
+                            echo "<option>";
+                            echo $console[$i]["nom_Console"];
+                            echo "</option>";
+                        }
+                        ?>
+                    </select>
                 </td>
             </tr>
             <tr>
@@ -133,7 +105,7 @@ include_once "../view/HeadPage.php";
             <input type="submit" name="discard" value="Annuler" class="submit"> 
             <input type="submit" name="submit" value="Confirmer" class="submit">
         </div>
-        <div id="MessageErreur"><?php echo $message ?></div>
+        <div id="MessageErreur"><?php// echo $message ?></div>
     </form>
 </section>
 <aside id="AsidePage">
