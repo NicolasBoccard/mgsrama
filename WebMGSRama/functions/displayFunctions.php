@@ -10,6 +10,11 @@
 
 //Fonction pour afficher les images
 function displayImg($tabUser) {
+    ?>
+<header>
+    Derniers jeux ajoutés
+</header>
+    <?php
     for ($i = 0; $i < count($tabUser); $i++) {
         ?>
         <tr id="trTableGame">

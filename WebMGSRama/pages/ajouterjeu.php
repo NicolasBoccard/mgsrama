@@ -119,7 +119,7 @@ include_once "../view/HeadPage.php";
                     <label for="bandeOriginale">Bande originale :</label>
                 </td>
                 <td>
-                    <input type="file" name="bandeOriginale">
+                    <input type="file" name="bandeOriginale" accept="image/mp3">
                 </td>
             </tr>
             <tr>
@@ -127,7 +127,7 @@ include_once "../view/HeadPage.php";
                     <label for="image">Image :</label>
                 </td>
                 <td>
-                    <input type="file" name="image">
+                    <input type="file" name="image" accept="image/*">
                 </td>
             </tr>
         </table>
