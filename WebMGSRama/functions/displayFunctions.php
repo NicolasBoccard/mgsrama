@@ -29,7 +29,7 @@ function displayDetailGame($tab, $console) {
     <table>
         <tr>
             <td>
-                <?= $tab[0]["titre_Jeux"]; ?>
+                <h1><?= $tab[0]["titre_Jeux"]; ?></h1>
             </td>
         </tr>
         <tr>
@@ -62,7 +62,7 @@ function displayDetailGame($tab, $console) {
         <tr>
             <td>
                 Bande originale :
-                <?= $tab[0]["bo_Jeux"]?>
+                <audio src="<?= $tab[0]["bo_Jeux"]?>" controls></audio>
             </td>
         </tr>
         <tr>

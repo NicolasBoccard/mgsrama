@@ -30,11 +30,12 @@ if (isset($_POST["submit"])) {
         if (basename($_FILES['bandeOriginale']['name']) != "") {
             $uploaddir = '../media/bo/';
             $bandeOriginale = $uploaddir . basename($_FILES['bandeOriginale']['name']);
-            move_uploaded_file($_FILES['bandeOriginale']['tmp_name'], $bandeOriginale);
+            $moved = move_uploaded_file($_FILES['bandeOriginale']['tmp_name'], $bandeOriginale);
         } else {
             $bandeOriginale = "";
         }
-        if (basename($_FILES['image']['name']) != "") {
+        
+        if (basename($_FILES['image']['name']) != "") {            
             $uploaddir = '../media/pictures/';
             $image = $uploaddir . basename($_FILES['image']['name']);
             move_uploaded_file($_FILES['image']['tmp_name'], $image);
@@ -69,73 +70,9 @@ include_once "../view/HeadPage.php";
 
 <section id="SectionPage">
     <header>
-        Inscription
+        Gestion de mes jeux
     </header>
-    <form enctype="multipart/form-data" method="POST" action="#">
-        <table>
-            <tr>
-                <td>
-                    <label for="titre">Titre* :</label>
-                </td>
-                <td>
-                    <input type="text" name="titre" value="<?php echo $titre ?>">
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label for="date">Date* :</label>
-                </td>
-                <td>
-                    <input type="date" name="date">
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label for="studio">Studio* :</label>
-                </td>
-                <td>
-                    <input type="text" name="studio" value="<?php echo $studio ?>">
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label for="description">Description* :</label>
-                </td>
-                <td>
-                    <input type="text" name="description" value="<?php echo $description ?>">
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label for="console1">Console :</label>
-                </td>
-                <td>
-                    <?php echo $ConsolesHTML ?>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label for="bandeOriginale">Bande originale :</label>
-                </td>
-                <td>
-                    <input type="file" name="bandeOriginale">
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label for="image">Image :</label>
-                </td>
-                <td>
-                    <input type="file" name="image">
-                </td>
-            </tr>
-        </table>
-        <div id="ButtonForm">
-            <input type="submit" name="discard" value="Annuler" class="submit"> 
-            <input type="submit" name="submit" value="Confirmer" class="submit">
-        </div>
-        <div id="MessageErreur"><?php echo $message ?></div>
-    </form>
+    
 </section>
 <aside id="AsidePage">
     <?php
